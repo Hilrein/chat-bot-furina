@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фуриночка</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Мобильная кнопка меню -->
+    <button id="mobile-menu-btn" class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Затемнение для мобильного меню -->
+    <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+    
+    <div class="container">
+        <div id="sidebar" class="sidebar">
+            <div class="new-chat">
+                <!-- <button id="new-chat-btn"><i class="fas fa-plus"></i> Новый чат</button> -->
+            </div>
+            <div class="history">
+                <div class="history-title">История чатов(в разработке)</div>
+                <ul id="chat-history">
+                    <!-- История чатов будет добавлена через JavaScript -->
+                </ul>
+            </div>
+            <div class="footer">
+                <div class="user-info">
+                    <i class="fas fa-user"></i> Пользователь
+                </div>
+                <div class="settings">
+                    <button id="settings-btn" title="Настройки">
+                        <i class="fas fa-cog"></i> Настройки
+                    </button>
+                </div>
+                <div class="about">
+                    <button id="about-btn" title="Информация о разработке">
+                        <i class="fas fa-info-circle"></i> О разработке
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main">
+            <!-- Заголовок для мобильной версии -->
+            <div class="mobile-header">
+                <h1>Фуриночка</h1>
+            </div>
+            
+            <div class="chat-container" id="chat-container">
+                <div class="welcome-message">
+                    <h1>Фуриночка</h1>
+                    <p>Интерактивный ИИ-помощник, готовый ответить на ваши вопросы</p>
+                </div>
+                <div id="messages">
+                    <!-- Сообщения будут добавлены через JavaScript -->
+                </div>
+            </div>
+            
+            <div class="input-container">
+                <form id="message-form">
+                    <div class="input-box">
+                        <textarea 
+                            id="user-input" 
+                            placeholder="Напишите сообщение..." 
+                            rows="1"
+                            autocomplete="off"
+                        ></textarea>
+                        <button type="submit" id="send-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="disclaimer">
+                        Фуриночка может делать ошибки. Проверяйте важную информацию.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно настроек -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Настройки</h2>
+                <button id="close-settings-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3>Инструкции для AI</h3>
+                    <p class="settings-description">
+                        Функция в разработке.
+                    </p>
+                    <!-- <textarea 
+                        id="ai-instructions" 
+                        placeholder="Опишите, как AI должен отвечать на ваши вопросы..."
+                        rows="8"
+                    ></textarea> -->
+                    <div class="button-row">
+                        <!-- <button id="reset-instructions-btn">Сбросить</button>
+                        <button id="save-instructions-btn" class="primary-btn">Сохранить</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно информации о разработке -->
+    <div id="about-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Информация о разработке</h2>
+                <button id="close-about-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="about-section">
+                    <h3>Чат-бот Фуриночка</h3>
+                    <p>
+                        Версия: 1.0
+                    </p>
+                    <p>
+                        Время разработки: сентябрь 2024 - апрель 2025.
+                    </p>
+                    <p>
+                        
+Чат-бот Фуриночка был создан одним независимым разработчиком как персонализированный AI-помощник на своей базе языковой модели. В процессе разработки особое внимание уделялось не только технической реализации, но и воссозданию уникальной личности, вдохновлённой персонажем Фурина из Genshin Impact.
+Проект не является официальным продуктом Hoyoverse и создан исключительно в личных целях, с намерением вложить в нейросеть уникальный характер, эмоции и душу вымышленной героини.
+                    </p>
+                    
+                    <h4>Разработчик</h4>
+                    <div class="developer-info">
+                        <div class="developer-photo">
+                            <img src="{{ url_for('static', filename='img/developer.png') }}" alt="Фото разработчика">
+                        </div>
+                        <div class="developer-contacts">
+                            <p><strong>Контактная информация:</strong></p>
+                            <ul>
+                                <li><i class="fas fa-envelope"></i> Email: <a href="mailto:hilreinn@gmail.com">hilreinn@gmail.com</a></li>
+                                <li><i class="fab fa-github"></i> GitHub: <a href="https://github.com/hilrein" target="_blank">github.com/hilrein</a></li>
+                                <li><i class="fab fa-telegram"></i> Telegram: <a href="https://t.me/hilrein" target="_blank">@hilrein</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <p class="copyright">
+                        © 2025 Разработано с любовью к AI и аниме 💙
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
